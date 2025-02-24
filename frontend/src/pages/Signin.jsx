@@ -15,7 +15,7 @@ export default function SignIn() {
         <InputBox label="Password" placeholder="" type="password" />
 
         <Button>Sign In</Button>
-        <Footer text="Don't have an account?" linkText="Sign Up" linkHref="/signup" />
+        <Footer children={{ text: "Don't have an account?", linkText: "Sign Up" }} to="/signup" />
       </div>
     </div>
   );

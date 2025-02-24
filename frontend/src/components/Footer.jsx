@@ -1,10 +1,19 @@
-export default function Footer() {
-    return (
-      <p className="text-sm text-center mt-4">
-        Already have an account?{' '}
-        <a href="#" className="text-blue-500 hover:underline">
-          Login
-        </a>
-      </p>
-    );
-  }
+import {NavLink, useNavigate} from 'react-router-dom'
+
+export default function Footer({ children, to }) {
+  const navigate = useNavigate();
+  return (
+    <p className="text-sm text-center mt-4">
+      {children.text} {" "}
+      <button
+        className="text-blue-500 hover:underline"
+        onClick={() => navigate(to)}
+      >
+        {children.linkText}
+      </button>
+    </p>
+  );
+}
+
+
+  // x
