@@ -1,9 +1,5 @@
-import React from 'react'
-
-const Send = () => {
-  return (
-    <div>Send</div>
+export default function Send(){
+  return(
+    <h1>Sending Page</h1>
   )
 }
-
-export default Send

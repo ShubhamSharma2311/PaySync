@@ -3,6 +3,8 @@ import SignUp from './pages/signup'
 import SignIn from './pages/Signin'
 import Root from './layout/Root'
 import  Landing  from './pages/Landing'
+import UserDashBoard from './pages/Dashboard'
+import Send from './pages/Send'
 
 const router = createBrowserRouter([{
   path : '/',
@@ -16,7 +18,14 @@ const router = createBrowserRouter([{
   },{
     path : 'signin',
     element : <SignIn/>
-  }]
+  },{
+    path : 'dashboard',
+    element : <UserDashBoard/>
+  },{
+    path : 'send',
+    element : <Send/>
+  }
+]
 },])
 
 function App() {

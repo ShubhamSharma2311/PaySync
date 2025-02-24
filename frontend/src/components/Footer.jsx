@@ -1,4 +1,4 @@
-import {NavLink, useNavigate} from 'react-router-dom'
+import {NavLink, replace, useNavigate} from 'react-router-dom'
 
 export default function Footer({ children, to }) {
   const navigate = useNavigate();
@@ -7,7 +7,7 @@ export default function Footer({ children, to }) {
       {children.text} {" "}
       <button
         className="text-blue-500 hover:underline"
-        onClick={() => navigate(to)}
+        onClick={() => navigate(to, {replace : true})}
       >
         {children.linkText}
       </button>

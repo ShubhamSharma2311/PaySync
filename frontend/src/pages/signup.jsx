@@ -7,9 +7,9 @@ import { useState } from "react";
 import axios from 'axios'
 export default function SignUp() {
  
-  const [firstName, setFirstname] = useState('')
-  const [lastName, setLastname] = useState('')
-  const [email, setEmail] = useState('')
+  const [firstname, setFirstname] = useState('')
+  const [lastname, setLastname] = useState('')
+  const [username, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   return (
@@ -21,25 +21,26 @@ export default function SignUp() {
             setFirstname(e.target.value)
         }}
         label="First Name" placeholder="John" />
-        <InputBox oncChange = {(e)=>{
+        <InputBox onChange = {(e)=>{
             setLastname(e.target.value)
         }}
         label="Last Name" placeholder="Doe" />
-        <InputBox oncChange = {(e)=>{
+        <InputBox onChange = {(e)=>{
             setEmail(e.target.value)
         }}
          label="Email" placeholder="johndoe@example.com" type="email" />
-        <InputBox oncChange = {(e)=>{
+        <InputBox onChange = {(e)=>{
             setPassword(e.target.value)
         }}
          label="Password" placeholder="" type="password" />
-        <Button onClick={()=>{
-           axios.put('http://localhost/3000/api/vi/user/signup',{
-            firstName,
-            lastName,
-            email,
+        <Button onClick={async ()=>{
+         const response = await axios.post('http://localhost:3000/api/v1/user/signup',{
+            firstname,
+            lastname,
+            username,
             password
            })
+           localStorage.setItem("token",response.data.token)
         }}>Sign Up</Button>
         <Footer children={{ text: "Already have an account?", linkText: "Sign In" }} to="/signin" />
       </div>
