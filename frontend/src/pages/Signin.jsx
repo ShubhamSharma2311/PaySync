@@ -4,18 +4,18 @@ import InputBox from "../components/InputBox";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
 
-export default function SignUp() {
+export default function SignIn() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-500">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
-        <Heading>Sign Up</Heading>
-        <Paragraph>Enter your information to create an account</Paragraph>
-        <InputBox label="First Name" placeholder="John" />
-        <InputBox label="Last Name" placeholder="Doe" />
+        <Heading>Sign In</Heading>
+        <Paragraph text="Enter your credentials to access your account" />
+
         <InputBox label="Email" placeholder="johndoe@example.com" type="email" />
         <InputBox label="Password" placeholder="" type="password" />
-        <Button>Sign Up</Button>
-        <Footer />
+
+        <Button>Sign In</Button>
+        <Footer text="Don't have an account?" linkText="Sign Up" linkHref="/signup" />
       </div>
     </div>
   );
