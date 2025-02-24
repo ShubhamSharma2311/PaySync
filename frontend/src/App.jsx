@@ -2,7 +2,7 @@ import {BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes} from 
 import SignUp from './pages/signup'
 import SignIn from './pages/Signin'
 import Root from './layout/Root'
-import { Dashboard, Landing } from './pages/Landing'
+import  Landing  from './pages/Landing'
 
 const router = createBrowserRouter([{
   path : '/',

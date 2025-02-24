@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 
 
-export function Landing() {
+export default function Landing() {
   return (
     <div className="min-h-screen bg-gray-500 flex flex-col">
       <Navbar />
