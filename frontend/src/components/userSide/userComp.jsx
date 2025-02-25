@@ -4,7 +4,9 @@ import Send from "../../pages/Send";
 import { replace, useNavigate } from "react-router-dom";
 import axios  from 'axios'
 export default function UserComponent (){
-    
+    const [showAll, setShowAll] = useState(false);  // To show all users or not
+    const USERS_TO_SHOW = 5;                        // Number of users to show first
+
     const [users, setUsers] = useState([]);
     const [filter,setFilter] = useState('')
     useEffect ( ()=> {
@@ -12,6 +14,7 @@ export default function UserComponent (){
       axios.get('http://localhost:3000/api/v1/user/bulk?filter='+filter).then(response=>setUsers(response.data.user))
          
     }, [filter])
+    const displayedUsers = showAll ? users : users.slice(0, USERS_TO_SHOW);
 
     return <>
         <div className="font-bold mt-6 text-lg">
@@ -21,9 +24,19 @@ export default function UserComponent (){
             <input onChange={(e)=>setFilter(e.target.value)} type="text" placeholder="Search users..." className="w-full px-2 py-1 border rounded border-slate-200"></input>
         </div>
         <div>
-            {users.map(user => <User user={user} key={user._id} />)}
+        {displayedUsers.map(user => <User user={user} key={user._id} />)}
         </div>
-    </>
+        
+        {users.length > USERS_TO_SHOW && (
+        <button
+           className="mt-4 w-full bg-blue-500 text-white py-2 rounded"
+           onClick={() => setShowAll(!showAll)}  // This will toggle showAll between true/false
+  >
+          {showAll ? "See less" : "See more"}
+          </button>
+         )}
+
+      </>
 }
 
 function User({user}) {
