@@ -5,6 +5,7 @@ import Root from './layout/Root'
 import  Landing  from './pages/Landing'
 import UserDashBoard from './pages/Dashboard'
 import Send from './pages/Send'
+import DashBoardLayout from './layout/dashBoardlayout'
 
 const router = createBrowserRouter([{
   path : '/',
@@ -20,11 +21,15 @@ const router = createBrowserRouter([{
     element : <SignIn/>
   },{
     path : 'dashboard',
-    element : <UserDashBoard/>
-  },{
-    path : 'send',
-    element : <Send/>
-  }
+    element : <DashBoardLayout/>,
+    children : [ {
+      path : '',
+      element : <UserDashBoard/>
+    }, {
+      path : 'send',
+      element : <Send/>
+    }],
+  },
 ]
 },])
 
