@@ -34,7 +34,7 @@ export default function UserComponent (){
   >
           {showAll ? "See less" : "See more"}
           </button>
-         )}
+)}
 
       </>
 }
