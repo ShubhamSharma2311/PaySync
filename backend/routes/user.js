@@ -49,7 +49,7 @@ router.post("/signin",checkForSignin, async (req,res)=>{
     }
 
     res.status(411).json({
-        msg : "Please create an account !!"
+        msg : "Invalid username or password !!"
     })
 
 })

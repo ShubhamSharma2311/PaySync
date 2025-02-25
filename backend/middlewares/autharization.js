@@ -19,7 +19,7 @@ const JWT_SECRET = require("../config")
         next();
     } catch (error) {
         res.status(403).json({
-            msg : "Invalid Username or password"
+            msg : "there is an issue"
         })
     
     }
