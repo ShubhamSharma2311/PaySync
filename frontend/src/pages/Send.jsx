@@ -1,7 +1,9 @@
 import axios from "axios";
+import { useState } from "react";
 import { useSearchParams } from "react-router-dom"
 
 export default function Send () {
+    const [amount, setAmount] = useState(0)
     const [searchParams] = useSearchParams();
     let name = searchParams.get('name')
     let id =  searchParams.get('id')
@@ -28,7 +30,7 @@ export default function Send () {
                   >
                       Amount (in Rs)
                   </label>
-                  <input
+                  <input onChange={(e)=> setAmount(e.target.value)}
                       type="number"
                       class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                       id="amount"
@@ -40,7 +42,7 @@ export default function Send () {
                         to : id,
                         amount
                      }, {headers: {
-                        Authorization : 'Bearer' + localStorage.getItem('token')
+                        Authorization : 'Bearer ' + localStorage.getItem('token')
                      }})
                   }} >
                       Initiate Transfer
