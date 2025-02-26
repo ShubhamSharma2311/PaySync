@@ -20,18 +20,18 @@ PaySync is a web-based payment solution inspired by PayTM, designed to offer sea
 ## 🛠️ Tech Stack
 - **Frontend:** React, Tailwind CSS  
 - **Backend:** Node.js, Express  
-- **Database:** PostgreSQL with Prisma ORM  
+- **Database:** MongoDB with mongoose ODM 
 - **Authentication:** JWT  
 - **Validation:** Zod  
-- **Containerization:** Docker  
-- **Caching (planned):** Redis  
+  
+  
 
 ---
 
 ## 📝 Prerequisites
 - Node.js (v14 or higher)
-- PostgreSQL
-- Docker (for containerized deployment)
+- MongoDB
+
 
 ---
 
@@ -54,8 +54,6 @@ PaySync is a web-based payment solution inspired by PayTM, designed to offer sea
    ```bash
    cd ../backend
    npm install
-   npx prisma generate  # Generate Prisma client
-   npx prisma migrate dev --name init  # Run database migrations
    npm run dev  # Start the backend server
    ```
 
