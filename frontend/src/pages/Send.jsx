@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useSearchParams } from "react-router-dom"
 
 export default function Send () {
+
+    const [message,setMessage] = useState('')
     const [amount, setAmount] = useState(0)
     const [searchParams] = useSearchParams();
     let name = searchParams.get('name')
@@ -37,16 +39,23 @@ export default function Send () {
                       placeholder="Enter amount"
                   />
                   </div>
-                  <button class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white" onClick={()=>{
-                     axios.post('http://localhost:3000/api/v1/account/transfer',{
-                        to : id,
-                        amount
-                     }, {headers: {
-                        Authorization : 'Bearer ' + localStorage.getItem('token')
-                     }})
+                  <button class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white" onClick={async ()=>{
+                    try {
+                        const response = await axios.post('http://localhost:3000/api/v1/account/transfer',{
+                            to : id,
+                            amount
+                         }, {headers: {
+                            Authorization : 'Bearer ' + localStorage.getItem('token')
+                         }})
+                         setMessage(response.data.msg)
+                    } catch (error) {
+                        setMessage(error.response.data.msg)
+                    }
+                    
                   }} >
                       Initiate Transfer
                   </button>
+                  <div className="text-center text-green-500">{message}</div>
               </div>
               </div>
       </div>
